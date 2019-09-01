@@ -2,7 +2,7 @@
 
 **NetID**: xq4954
 
-#Homework #1 Solution
+# Homework #1 Solution
 
 # Question 1
 ## (a)
@@ -45,7 +45,7 @@ Pushed to github ![Push](images/Capture7.PNG)
 Programming languages:
 1. JAVA
 2. Python
-e
+3. C Language
 ## (b)
 
 Operating Systems:
