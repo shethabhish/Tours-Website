@@ -1,7 +1,8 @@
-#Homework #1 Solution
-**Student Name**:  Sai Shethabhish Naidu Palla
+**Student Name:  Sai Shethabhish Naidu Palla**
 
 **NetID**: xq4954
+
+#Homework #1 Solution
 
 ## Question 1
 ## (a)
@@ -15,17 +16,17 @@ Clone ![Clone image](images/Capture1.PNG)
 ## (a)
 Readme Changes ![Readme](images/Capture3.PNG)
 
-##(b)
+## (b)
 Screenshot deletion1 ![Screenshot deleted1](images/Capture4.PNG)
 Screenshot deletion2 ![Screenshot deleted2](images/Capture5.PNG)
 Status and log ![Status and log](images/Capture6.PNG)
 
-##(c)
+## (c)
 Pushed to github ![Push](images/Capture7.PNG)
 
 ## Question 3
-##(a)
+## (a)
 
-##(b)
+## (b)
 
 
