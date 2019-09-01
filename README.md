@@ -24,6 +24,8 @@ Status and log ![Status and log](images/Capture6.PNG)
 Pushed to github ![Push](images/Capture7.PNG)
 
 ## Question 3
+##(a)
 
+##(b)
 
 
