@@ -1,4 +1,4 @@
-# Homework #1 Solution
+# Homework #2 Solution
 
 **Sai Shethabhish Naidu Palla**
 
