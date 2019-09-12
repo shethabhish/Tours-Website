@@ -46,7 +46,7 @@
 (a)
 
 (b) 
-![js](images/8.PNG)
+![js](images/8.png)
 
 
 
