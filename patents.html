@@ -1,0 +1,45 @@
+<html>
+
+<head>
+<title> Patents Info </title>
+<script src="C:\Users\home\Desktop\WSA1\assignments-shethabhish\patentInfo.js"></script>
+</head>
+
+<body>
+<table id = "table">
+<tr>
+<th><b>Patent Number</b></th>
+<th><b>Date <b></th>
+<th><b>Title<b></th>
+</tr>
+</table>
+
+<script>
+
+var table_obj = document.getElementById("table");
+for(let i=0; i<patentinfo.length; i++)
+{
+appn = document.createElement("tr");
+patn = document.createElement("td");
+result = document.createTextNode(patentinfo[i].PatNumber);
+patn.append(result);
+
+dt = document.createElement("td");
+result = document.createTextNode(patentinfo[i].Date);
+dt.append(result);
+
+title = document.createElement("td");
+result = document.createTextNode(patentinfo[i].Title);
+title.append(result);
+
+appn.append(patn, dt, title);
+table_obj.append(appn);
+}
+
+
+
+</script>
+
+
+</body>
+</html>
