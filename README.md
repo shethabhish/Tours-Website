@@ -22,11 +22,25 @@
 ![Image 6](images/6.png)
 
 
-(b)
+(b) Javascript
+    
+    var pat = document.querySelectorAll(".patent")
+    var patent_info = [];
+    for(var i=0; i <ptn.length; i++)
+    {
+        pat_info = { PatNumber : ptn[i].children[0].textContent, Title : ptn[i].children[1].textContent, Date : ptn[i].children[3].textContent }
+        patent_info.push(pat_info);
+    }
 
-(a)
+# Question 4
 
-(b)
+(a) 
+
+
+(b) 
+
+![Image 7](images/7.png)
+
 
 
 
