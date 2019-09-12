@@ -18,9 +18,9 @@
 
 (a)
 
-![DOM 1](images/5.PNG)
+![Image 5](images/5.PNG)
+![Image 6](images/6.PNG)
 
-![DOM 2](images/6.PNG)
 
 (b)
 
