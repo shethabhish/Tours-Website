@@ -18,8 +18,8 @@
 
 (a)
 
-![Image 5](images/5.PNG)
-![Image 6](images/6.PNG)
+![Image 5](images/5.png)
+![Image 6](images/6.png)
 
 
 (b)
