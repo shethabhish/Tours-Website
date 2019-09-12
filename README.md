@@ -39,7 +39,7 @@
 
 (b) 
 
-![Image 7](images/7.png)
+![Image 7](images/7.PNG)
 
 
 
