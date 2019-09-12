@@ -41,6 +41,14 @@
 
 ![Image 7](images/7.PNG)
 
+# Queston 5
+
+(a)
+
+(b) 
+![js](images/8.PNG)
+
+
 
 
 
