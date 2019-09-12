@@ -14,6 +14,21 @@
 ![Image 3](images/3.PNG)
 ![Image 4](images/4.PNG)
 
+# Question 3
+
+(a)
+
+![DOM 1](images/5.PNG)
+
+![DOM 2](images/6.PNG)
+
+(b)
+
+(a)
+
+(b)
+
+
 
 
 
