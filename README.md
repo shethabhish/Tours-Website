@@ -27,7 +27,7 @@
 
 		<body>
 		<h1>Random Drawing Fun!</h1>
-	  	<h2>Brought to you by uh3536</h2>
+	  	<h2>Brought to you by xq4954</h2>
 
 		<svg id="circles" version ="1.1" baseProfile="full" height="800" width="800" xmlns="http://www.w3.org/2000/svg">
 		</svg>
@@ -89,7 +89,7 @@
     
 	    <h1>Random Drawing Fun!</h1>
 
-  		<h2>Brought to you by zy7886!</h2>
+  		<h2>Brought to you by xq4954!</h2>
 
 		<label for="circles">Number of Circles:</label>
 		<input type="number" id="circles" name="circles" min="1" max="20">
@@ -101,3 +101,78 @@
     
 	</body>
 	</html>
+
+
+# Question 4
+
+![images](images/3.PNG)
+![signup](images/4.PNG)
+
+"Html code"
+
+	<!doctype html>
+	<html>
+
+	<head>
+
+	<title>Signup</title> 
+	<link rel="stylesheet" href="ass2.css">
+
+	</head>
+
+	<body>
+		
+		<nav>
+
+			<ul>
+				<li><p class="logo">S.T.A.R LABS Tours</p></li>
+				<li><a class="button" href="www.google.com">Available Tours</a></li>
+				<li><a class="button" href="www.google.com">Sign in</a></li>
+				<li><a class="button" href="www.google.com">Sign up </a></li>
+				<li><a class="button" href="www.google.com">About</a></li>
+			</ul>
+
+			<h3>(Let's Explore the Multiverse)</h3>
+
+		</nav>
+
+		<main>
+				
+			<img src="multiverse.jpg" width="600" height="400">
+			<p>The S.T.A.R Labs tours is a rescently established agency. But we take ypu to he places where other tours cannot take you.<br>
+				Yess, you guessed it right. We take you to the multiverse. Ever wondered going to another earth and maybe meet your doppleganger??<br>
+				At S.T.A.R Labs tour we make it possible. We take you to another earth where you can meet your doppleganger. Doesn't it sound cool and exciting meeting yourself in another universe?<br>
+				So why the wait? Signup quickly.
+			</p>
+			<img src="multiverse1.jpg" width="600" height="400">
+
+			<h3 style="padding-left: 10px;">Enter Your Information : </h3>
+
+		<div class="container">
+
+		<form>
+			<div>	First name:
+				<input type="text" name="firstname"></div>
+				<div>Last name:
+				<input type="text" name="lastname"></div>
+				<div>Email:
+				<input type="email" name="email"></div>
+				<div>How did you hear about us?
+				<input type="text" name="temp"></div>
+				<div><button style="text-align: left; padding-left: 10px;">Sign me Up!</button></div>
+		</form>
+	</div>
+		</main>
+	</body>
+
+	</html>
+
+"CSS code"
+
+	.container{
+	    display: grid;
+	    grid-template-columns: 650px;
+	    text-align: right;
+	    padding-bottom: 10px;
+	    grid-gap: 20px;
+	    }
