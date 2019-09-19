@@ -104,7 +104,7 @@
 
 
 # Question 4
-
+(a) and (b)
 ![images](images/3.PNG)
 ![signup](images/4.PNG)
 
@@ -176,3 +176,18 @@
 	    padding-bottom: 10px;
 	    grid-gap: 20px;
 	    }
+
+(c) **Navbar**
+
+[nav1](images/5.png)
+[nav1](images/6.png)
+[nav1](images/7.png)
+
+**CSS code**
+
+nav{
+	  background-color: black;
+	  color: white;
+	  display: flex;
+	  position: fixed;
+	}
