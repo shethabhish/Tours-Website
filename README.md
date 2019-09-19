@@ -19,34 +19,22 @@ maxR = 170;
 
 
 
-function randomCircles(){
-let x = Math.random()*(maxX - maxSize);
-let y = Math.random()*(maxY - maxSize);
-let r = Math.random()*(maxR - maxSize);
-let width = Math.random()*maxSize;
-let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-circle.setAttribute("cx", x);
-circle.setAttribute("cy", y);
-circle.setAttribute("width", width);
-circle.setAttribute("height", width);
-circle.setAttribute("r", r*0.5);
-let colorStr = `rgb(${255*Math.random()}, ${255*Math.random()}, ${255*Math.random()})`;
-circle.setAttribute("fill", colorStr);
-circle.setAttribute("fill-opacity", 0.7);
-return circle;
-}
-
-for (let i = 0; i < 30; i++) {
-  mySVG.appendChild(randomCircles());
-}
-
-
-
-
-
-
-
-
-
-
-
+	function randomCircles() {
+	let x = Math.random()*(maxX - maxSize);
+	let y = Math.random()*(maxY - maxSize);
+	let r = Math.random()*(maxR - maxSize);
+	let width = Math.random()*maxSize;
+	let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+	circle.setAttribute("cx", x);
+	circle.setAttribute("cy", y);
+	circle.setAttribute("width", width);
+	circle.setAttribute("height", width);
+	circle.setAttribute("r", r*0.5);
+	let colorStr = `rgb(${255*Math.random()}, ${255*Math.random()}, ${255*Math.random()})`;
+	circle.setAttribute("fill", colorStr);
+	circle.setAttribute("fill-opacity", 0.7);
+	return circle;
+	}
+	for (let i = 0; i < 30; i++) {
+	  mySVG.appendChild(randomCircles());
+	}
