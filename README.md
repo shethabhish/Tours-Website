@@ -295,6 +295,83 @@
 	}
 
 
+# Question 3
+
+![image](images/13.png)
+
+**html code**
+
+	<!DOCTYPE html>
+	<html lang="en">
+
+	<head>
+	   <meta charset="utf-8">
+	 
+	   <title>Random Drawing</title>
+	   <script async src="drawing.js"></script>
+	   <script defer src="drawing.js"></script>
+	   <script src="drawing.js"></script>
+
+	   <link rel="stylesheet" href="drawing.css" />
+	</head>
+
+	<body>
+
+	   <h1>Random Drawing Fun!</h1>
+	  <h2>Brought to you by xq4954!</h2>
+
+	  <div class="box">
+	  <fieldset>
+	  <legend>Control Panel</legend>
+	  <section id="ControlPanel" class="container">
+
+	<label for="circles">Number of Circles:</label>
+	<input type="number" id="circles" name="circles" min="1" max="20">
+	<button id="myBtn1">Click to add Circles</button>
+
+	<label for="squares">Number of Squares:</label>
+	<input type="number" id="squares" name="squares" min="1" max="20">
+	<button id="myBtn2">Click to add Squares</button>
+
+	<button id='remove'>Remove</button>
+	</section>
+	</fieldset>
+	</div>
+	   
+	</body>
+	</html>
+
+**css code**
+
+	.ControlPanel{
+	  display: grid;
+	  grid-template-columns: 700px;
+	  text-align: right;
+	  padding-bottom: 15px;
+	  grid-gap: 15px;
+	}
+
+	.container{
+	display: grid;
+	grid-gap:10px;
+	text-align: center;
+	}
+
+	.box{
+	width: 210px;
+	  height: 210px;
+	  border: 5px solid hotpink;
+	  margin: 10px;
+	  padding: 40px;
+	  text-align: center;
+	}
+
+
+
+
+
+
+
 
 # Question 4
 (a) and (b)
