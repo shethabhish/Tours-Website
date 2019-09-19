@@ -11,11 +11,11 @@
 
  There was a potential issue, so we solved it by the below code:
 
- var mySVG = document.getElementById("circles");
-var maxSize = 50,
-maxX = 1000,
-maxY = 500;
-maxR = 170;
+	var mySVG = document.getElementById("circles");
+	var maxSize = 50,
+	maxX = 1000,
+	maxY = 500;
+	maxR = 170;
 
 
 
