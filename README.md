@@ -284,3 +284,10 @@
 		  display: flex;
 		  position: fixed;
 		}
+
+
+# Question 5
+
+(a)
+
+![server](images/9.PNG)
