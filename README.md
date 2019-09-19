@@ -36,6 +36,7 @@
 		</html>
 
 **code of drawing**
+
 	var mySVG = document.getElementById("circles");
 	var maxSize = 50,
 	maxX = 1000,
