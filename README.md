@@ -102,6 +102,99 @@
 	</body>
 	</html>
 
+(c)
+
+![cands](images/8.PNG)
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+ 
+   <title>Random Drawing</title>
+   <script async src="drawing.js"></script>
+   <script defer src="drawing.js"></script>
+   <script src="drawing.js"></script>
+
+   <link rel="stylesheet" href="drawing.css" />
+</head>
+
+<body>
+   
+   <h1>Random Drawing Fun!</h1>
+
+  <h2>Brought to you by xq4954!</h2>
+
+<label for="circles">Number of Circles:</label>
+<input type="number" id="circles" name="circles" min="1" max="20">
+<button id="myBtn1">Submit</button>
+
+<label for="squares">Number of Squares:</label>
+<input type="number" id="squares" name="squares" min="1" max="20">
+<button id="myBtn2">Submit</button>
+   
+</body>
+</html>
+
+**Code of JS fle**
+
+var mySVG = document.getElementById("circles");
+var maxSize = 50,
+maxX = 1000,
+maxY = 500;
+maxR = 170;
+
+var mySVG = document.getElementById("squares");
+var maxSize = 50,
+maxX = 500,
+maxY = 300;
+
+function randomCircles(){
+let x = Math.random()*(maxX - maxSize);
+let y = Math.random()*(maxY - maxSize);
+let r = Math.random()*(maxR - maxSize);
+let width = Math.random()*maxSize;
+let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+circle.setAttribute("cx", x);
+circle.setAttribute("cy", y);
+circle.setAttribute("width", width);
+circle.setAttribute("height", width);
+circle.setAttribute("r", r*0.5);
+let colorStr = `rgb(${255*Math.random()}, ${255*Math.random()}, ${255*Math.random()})`;
+circle.setAttribute("fill", colorStr);
+circle.setAttribute("fill-opacity", 0.7);
+return circle;
+}
+
+function randomSquare() {
+ let x = Math.random()*(maxX - maxSize);
+ let y = Math.random()*(maxY - maxSize);
+ let width = Math.random()*maxSize;
+ let square = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+ square.setAttribute("x", x);
+ square.setAttribute("y", y);
+ square.setAttribute("width", width);
+ square.setAttribute("height", width);
+ let colorStr = `rgb(${255*Math.random()}, ${255*Math.random()}, ${255*Math.random()})`;
+ square.setAttribute("fill", colorStr);
+ square.setAttribute("fill-opacity", 0.7);
+ return square;
+}
+
+document.getElementById("myBtn1").addEventListener("click", function(){
+document.getElementById("circles").innerHTML = randomCircles()}
+document.getElementById("myBtn2").addEventListener("click", function(){
+document.getElementById("squares").innerHTML = randomSquare()}
+
+
+for (let i = 0; i < 30; i++) {
+ mySVG.appendChild(randomCircles());
+}
+for (let i = 0; i < 30; i++) {
+ mySVG.appendChild(randomSquare());
+}
+
 
 # Question 4
 (a) and (b)
