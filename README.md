@@ -35,10 +35,11 @@ circle.setAttribute("fill", colorStr);
 circle.setAttribute("fill-opacity", 0.7);
 return circle;
 }
-window.onload = randomCircles();
+
 for (let i = 0; i < 30; i++) {
   mySVG.appendChild(randomCircles());
 }
+
 
 
 
