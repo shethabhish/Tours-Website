@@ -67,7 +67,7 @@
 
 (b)
 
-![inputs](images/img2.png)
+![inputs](images/2.PNG)
 
 **randomDrawing code** 
 
