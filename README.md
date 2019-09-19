@@ -179,9 +179,9 @@
 
 (c) **Navbar**
 
-[nav1](images/5.PNG)
-[nav2](images/6.PNG)
-[nav3](images/7.PNG)
+![nav1](images/5.PNG)
+![nav2](images/6.PNG)
+![nav3](images/7.PNG)
 
 **CSS code**
 
