@@ -104,7 +104,7 @@
 
 (c)
 
-![cands](images/8.PNG)
+![cands](images/8.png)
 
 <!DOCTYPE html>
 <html lang="en">
