@@ -66,3 +66,38 @@
 	}
 
 (b)
+
+![inputs](images/img2.png)
+
+**randomDrawing code** 
+
+	<!DOCTYPE html>
+	<html lang="en">
+
+	<head>	
+	    <meta charset="utf-8">
+ 
+	    <title>Random Drawing</title>
+	    <script async src="drawing.js"></script>
+	    <script defer src="drawing.js"></script>
+	    <script src="drawing.js"></script>
+
+	    <link rel="stylesheet" href="drawing.css" />
+	</head>
+
+	<body>
+    
+	    <h1>Random Drawing Fun!</h1>
+
+  		<h2>Brought to you by zy7886!</h2>
+
+		<label for="circles">Number of Circles:</label>
+		<input type="number" id="circles" name="circles" min="1" max="20">
+		<input type="submit" name="submit">
+
+		<label for="squares">Number of Squares:</label>
+		<input type="number" id="squares" name="squares" min="1" max="20">
+		<input type="submit" name="submit">
+    
+	</body>
+	</html>
