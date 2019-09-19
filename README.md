@@ -179,15 +179,15 @@
 
 (c) **Navbar**
 
-[nav1](images/5.png)
-[nav1](images/6.png)
-[nav1](images/7.png)
+[nav1](images/5.PNG)
+[nav2](images/6.PNG)
+[nav3](images/7.PNG)
 
 **CSS code**
 
-nav{
-	  background-color: black;
-	  color: white;
-	  display: flex;
-	  position: fixed;
-	}
+	nav{
+		  background-color: black;
+		  color: white;
+		  display: flex;
+		  position: fixed;
+		}
