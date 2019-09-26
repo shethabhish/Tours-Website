@@ -101,5 +101,33 @@ NPM version: 6.9.0
 
 # Question 5
 
+(a)
+
+**index.js file code**
+
+		import React from "react";
+		import ReactDOM from "react-dom";
+		import chemElements from "./elements.json";
+
+		// var test = this.getJSON("elements.json");
+		// var jsontest = JSON.parse(test);
+		// console.log(jsontest);
+
+		// var data = JSON.parse();
+		// console.log(data);
+		// What is this? HTML mixed with JavaScript
+		const element = (
+		<div>
+		<h1>The Periodic Table</h1>
+		<h2>Brought to you by Gayatri and net id uh3536 </h2>
+		<h3>There are 118 chemical elements</h3>
+		</div>);
+		ReactDOM.render(
+		    element,
+		    document.getElementById("root")
+		);
+
+![8](images/8.PNG)
+
 
 
