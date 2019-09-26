@@ -13,6 +13,8 @@ NPM version: 6.9.0
 
 # Question 2
 
+![2](images/3.png)
+
 # Question 3
 
 # Question 4
