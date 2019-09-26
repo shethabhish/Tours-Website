@@ -129,5 +129,43 @@ NPM version: 6.9.0
 
 ![8](images/8.png)
 
+(b)
+
+**index.js file code**
+
+import React from "react";
+import ReactDOM from "react-dom";
+import chemElements from "./elements.json";
+
+function PT(props){
+
+const content = props.chemElements.map((post) =>
+<tr>
+<td>{post.atomic_number}</td>
+<td>{post.name}</td>
+<td>{post.symbol}</td>
+<td>{post.phase}</td>
+<td>{post.year_of_discovery}</td>
+</tr>
+);
+
+const heads = props.desiredCols.map((itr) =>
+<th>{itr}</th>
+);
+
+return(
+<table>
+<thread>
+{heads}
+</thread>
+<tbody>
+{content}
+</tbody>
+</table>
+);
+}
+
+
+
 
 
