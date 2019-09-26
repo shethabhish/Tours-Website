@@ -127,7 +127,7 @@ NPM version: 6.9.0
 		    document.getElementById("root")
 		);
 
-![8](images/8.PNG)
+![8](images/8.png)
 
 
 
