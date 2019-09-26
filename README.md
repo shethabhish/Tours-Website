@@ -23,9 +23,18 @@ NPM version: 6.9.0
 
 (c)
 
+
 ![3](images/4.png)
 
 # Question 3
+
+(a)
+
+![4](images/3.PNG)
+
+(b)
+
+![5](images/5.png)
 
 # Question 4
 
