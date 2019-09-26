@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html>
-<body>
+An h1 header
+============
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+Paragraphs are separated by a blank line.
 
-</body>
-</html>
+2nd paragraph. *Italic*, **bold**, and `monospace`. Itemized lists
+look like:
+
+  * this one
+  * that one
+  * the other one
