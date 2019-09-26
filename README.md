@@ -13,7 +13,7 @@ NPM version: 6.9.0
 
 # Question 2
 
-![2](images/3.png)
+![2](images/3.PNG)
 
 # Question 3
 
