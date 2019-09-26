@@ -9,6 +9,8 @@ Nodejs version: v10.16.3
 
 NPM version: 6.9.0
 
+![1](images/2.png)
+
 # Question 2
 
 # Question 3
