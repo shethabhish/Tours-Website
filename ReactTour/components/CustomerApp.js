@@ -15,7 +15,7 @@ render(){
         <div>
     <nav>
     <ul>
-    <li><p className="logo">Underwater Tour</p></li>
+    <li><p className="logo">S.T.A.R. LABS Tours</p></li>
     <li><a href="#">Coming Tours</a></li>
     <li><a href="#">My Tours</a></li>
     <li><a href="#">About Us</a></li>

@@ -18,7 +18,7 @@ return(
 
 <nav>
 <ul>
-<li><p className="logo">Underwater Tours</p></li>
+<li><p className="logo">S.T.A.R. LABS Tours</p></li>
 <li><a href="www.google.com">Coming Tours</a></li>
 <li><a href="www.google.com">Login</a></li>
 <li><a href="signup.html">Newsletter Signup</a></li>
