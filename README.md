@@ -224,3 +224,13 @@ Guest Login State
 	}
 
 	export default Login;
+
+# Question 3
+
+A) Tours
+
+![Tours](images/8.png)
+
+
+B) Customers
+![Customers](images/9.png)

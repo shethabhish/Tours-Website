@@ -1,7 +1,8 @@
+// 
 import React from "react";
+import Customer  from "./Customer";
 
-
-class AdminApp extends React.Component{
+export class AdminApp extends React.Component{
 
 constructor(props) {
         super(props);
@@ -9,13 +10,27 @@ constructor(props) {
   }
 
 render(){
+let contents = null;
 
+        switch (this.state.show) {
+
+            case "customer":
+                contents = <Customer> </Customer>;
+                break;
+                case "login":
+                contents = <Login> </Login>;
+                break;
+               
+
+           default:
+                contents = <Customer> </Customer>;
+        }
 return(
 
 <div>
 <nav>
 <ul>
-<li><p className="logo">S.T.A.R. LABS Tours</p></li>
+<li><p className="logo">S.T.A.R. LABS Tours></p></li>
 <li><a href="#">Tour Management</a></li>
 <li><a href="#">Customer Management</a></li>
 <li><a href="#">About Us</a></li>
@@ -24,6 +39,7 @@ return(
 
 </ul>
 </nav>
+{contents}
 </div>
 
 );
