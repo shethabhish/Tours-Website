@@ -227,10 +227,10 @@ Guest Login State
 
 # Question 3
 
-A) Tours
+A) Customer Tours State
 
-![Tours](images/8.png)
+![Tours](images/9.png)
 
 
-B) Customers
-![Customers](images/9.png)
+B) Admin Customers State
+![Customers](images/8.png)
