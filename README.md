@@ -234,3 +234,96 @@ A) Customer Tours State
 
 B) Admin Customers State
 ![Customers](images/8.png)
+
+# Question 4
+
+A)
+
+![Login](images/10.png)
+
+B)
+
+**Index.js File Code**
+
+	class App extends React.Component {
+	    constructor(props) {
+		super(props);
+		this.state = {role: "guest",user: null}; // We will have "user" and "admin" roles too.
+		this.handleLogin = this.handleLogin.bind(this);
+		this.handleLogout = this.handleLogout.bind(this);
+	    }
+
+	    handleLogin(role, Info){
+		if(role === "admin"){
+		    this.setState({
+		        role : "admin",
+		        user: "Info",
+		    })
+		} else if(role === "customer"){
+		    this.setState({
+		        role : "customer",
+		        user: "Info",
+		    })
+		}
+	    }
+
+**Login.js File Code**
+
+	class Login extends React.Component {
+
+	    constructor(props) {
+		super(props);
+		this.state = {role: "guest", email: null,password: null,};
+		this.setEmail = this.setEmail.bind(this);
+		this.setPassword = this.setPassword.bind(this);
+		this.signIn = this.signIn.bind(this);
+
+	    }
+
+	    setEmail(event){
+		this.setState({
+		    email: event.target.value
+		    //email: this.refs.email.value,
+		});
+	    }
+
+	    setPassword(event){
+		this.setState({
+		    password: event.target.value
+		    //password: this.refs.password.value,
+		});
+	    }
+
+	    signIn() {
+		if(this.state.email === "admin@email.org"){
+		    console.log('admin');
+		    this.props.OnSucces("admin",{name: "garima", netid: "mm6326"});
+		}
+		else if(this.state.email === "cust@email.org"){
+		    console.log('customer');
+		    this.props.OnSucces("customer",{name: "garima", netid: "mm6326"});
+		}
+		else {
+		    console.log('guest');
+		    this.props.OnSucces("guest",{});
+		}
+	    }
+
+ C)
+
+**Index.js File Code Snippet**
+
+	 handleLogout(){
+		this.setState({
+		    role: "guest",
+		    user: null,
+		})
+	    }
+
+	return(
+     	 <div>
+          {this.state.role === "guest" && (<GuestApp handleLogin = {this.handleLogin} />)}
+          {this.state.role === "admin" && (<AdminApp handleLogout = {this.handleLogout}/>)}
+          {this.state.role === "customer" && (<CustomerApp handleLogout = {this.handleLogout}/>)}
+         </div>
+      	)
