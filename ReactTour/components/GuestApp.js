@@ -59,17 +59,17 @@ let contents = null;
        switch (this.state.show) {
 
            case "home":
-               contents = <home> </home>;
+               contents = <Home> </Home>;
                break;
                case "about":
-               contents = <about> </about>;
+               contents = <About> </About>;
                break;
                case "login":
-               contents = <login> </login>;
+               contents = <Login> </Login>;
                break;
 
           default:
-               contents = <home> </home>;
+               contents = <Home> </Home>;
        }
 
 
