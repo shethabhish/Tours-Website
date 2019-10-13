@@ -327,3 +327,65 @@ B)
           {this.state.role === "customer" && (<CustomerApp handleLogout = {this.handleLogout}/>)}
          </div>
       	)
+
+# Question 5
+
+(a) Json file
+
+	[{"Name": "Earth X",
+	"Date": "/01/2/2019"},
+
+
+	{"Name": "Earth Infinite",
+	"Date": "/02/30/2019"},
+
+	{"Name": "Earth Dead",
+	"Date": "/05/21/2019"},
+
+	{"Name": "Earth 2",
+	"Date": "/08/15/2019"}]
+
+(b)
+
+![table](images/11.png)
+
+js code
+
+	import React from "react";
+	import tours  from "../tours.json";
+	import "./table .css";
+
+	export class Tours extends React.Component{
+
+	constructor(props) {
+	        super(props);
+	        this.state = {show: "tours"};
+	  }
+
+	render(){
+	return(
+
+	<div>
+	<br/><br/><h1>Tours</h1>
+	{tours.map((tourdetails, index) => {
+	return <div>
+	<tr>
+	<th>Name</th>
+	<th>Date</th>
+	</tr>
+	<table>
+	<tr>
+	<td>{tourdetails.Name}</td>
+	<td>{tourdetails.Date}</td>
+	</tr>
+
+	</table>
+	</div>
+	})}
+	</div>
+
+	);
+	}
+	}
+
+	export default Tours;
