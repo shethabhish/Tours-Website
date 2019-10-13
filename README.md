@@ -389,3 +389,7 @@ js code
 	}
 
 	export default Tours;
+
+(c)
+
+[link](http://csweb01.csueastbay.edu/~xq4954/xq4954/index.html)
