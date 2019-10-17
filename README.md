@@ -23,3 +23,15 @@ Doesn't fall into any special address categories
 (d)
 
 ![Location](images/4.PNG)
+
+# Question 4
+
+(a) 
+
+The this keyword in a javascript code refers to the object which is excuting in the current file.
+
+The this keyword can be used to refer the variables and functions that are globally declared(window object).
+
+(b)
+
+![this again](images/5.PNG)
