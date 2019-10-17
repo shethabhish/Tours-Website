@@ -8,7 +8,7 @@
 
 (a) 
 
-![Internet](images/1.PNG)
+![Internet](images/1.png)
 
 (b)
 
