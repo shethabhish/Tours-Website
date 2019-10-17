@@ -8,6 +8,8 @@
 
 (a)
 
+![new](images/8.png)
+
 (b)
 
 (c)
