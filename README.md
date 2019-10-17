@@ -10,3 +10,7 @@
 
 ![Internet](images/1.png)
 
+(b)
+
+![Manufacturer](images/2.png)
+
