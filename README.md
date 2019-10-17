@@ -12,7 +12,12 @@
 
 (b)
 
+![add](images/9.png)
+
 (c)
+
+![neww](images/10.png)
+
 
 (d)
 
@@ -76,6 +81,10 @@
 # Question 2
 
 (a)
+
+![delete](images/11.png)
+
+![deleted](images/12.png)
 
 (b,c)
 
