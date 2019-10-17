@@ -8,9 +8,9 @@
 
 (a) 
 
-![Internet](images/1.png)
+![Internet](images/1.PNG)
 
 (b)
 
-![Manufacturer](images/2.png)
+![Manufacturer](images/2.PNG)
 
