@@ -13,9 +13,13 @@
 (b)
 
 ![Manufacturer](images/2.PNG)
+
 Doesn't fall into any special address categories
 
 (c)
 
 ![Address](images/3.PNG)
 
+(d)
+
+![Location](images/4.PNG)
