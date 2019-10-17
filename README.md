@@ -35,3 +35,12 @@ The this keyword can be used to refer the variables and functions that are globa
 (b)
 
 ![this again](images/5.PNG)
+
+(c)
+
+![answer](images/6.PNG)
+
+(d)
+
+![answer](images/7.PNG)
+
