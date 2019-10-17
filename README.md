@@ -6,6 +6,99 @@
 
 # Question 1
 
+(a)
+
+(b)
+
+(c)
+
+(d)
+
+	constructor(props) {
+			super(props);
+			this.state = {showing: "tours",
+			addName:"",
+			tours: tours,
+			Date: "",
+			Name: ""};
+		  }
+
+
+(e)
+
+	<div>
+	        <p> Add Tour </p>
+
+	        <label>Name</label>
+	        &nbsp;&nbsp;&nbsp;<input type="text" name="name" onChange= {this.addName.bind(this)}/><br/>
+
+	        <label>Date</label>
+	        &nbsp;&nbsp;&nbsp;<input type="text" name="date" onChange= {this.addDate.bind(this)}/><br/>
+	        
+	        <button className = "but" onClick={this.addTour.bind(this)}>Add</button>
+
+	      </div>
+
+(f)
+
+	addName(element){
+			this.setState({
+			    Name: element.target.value
+			})
+		    }
+		   
+		addDate(element){
+			this.setState({
+			    Date: element.target.value
+			})
+		    }
+
+		addTour() {
+		 const copyTours = Object.assign([],this.state.tours);
+		 console.log('copyTours ',copyTours);
+		  copyTours.push({
+			Name: this.state.Name,
+			  Date: this.state.Date
+			})
+		   this.setState({tours: copyTours});
+		    } 
+
+		TableHeader() {
+		      let header = Object.keys(this.state.tours[0])
+		      return header.map((key, index) => {
+			 return <th className="th" key={index}>{key.toUpperCase()}</th>
+		      })
+		   }
+
+
+# Question 2
+
+(a)
+
+(b,c)
+
+	delete(i) {
+		  let choice = this.state.tours.filter(function(place, index){
+		    if(index === i)
+		      return false;
+		    else
+		      return true;
+		  })
+		  this.setState({tours: choice});
+		}
+
+		TableData() {
+			 let that = this;  
+			      return this.state.tours.map((place, index) => {
+				 return (
+				    <tr>
+				       <td><button className = "b" onClick={that.delete.bind(that, index)}>Delete</button></td>
+				       <td>{place.Name}</td>
+			  <td>{place.Date}</td>
+				    </tr>
+				 )
+			      })
+			   }
 
 # Question 3
 
@@ -45,6 +138,7 @@ The this keyword can be used to refer the variables and functions that are globa
 
 Once the timer expires the setTimeout(cs651) will execute a function or particular piece of code.
 The setTimeout(cs351,0) is different from setTimeout(cs651) because its called with delay zero, its in a queue and is set to run at the next cycle. The code that is running currently must be executed first, so the resulting order of execution may no be as expected.
+
 (d)
 
 ![answer](images/7.PNG)
