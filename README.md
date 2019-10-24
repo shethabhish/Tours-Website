@@ -89,7 +89,16 @@ Fragement: -
 
 (b) 
 
-![3](images/6.PNG)
-![3](images/5.PNG)
+![3](images/3.PNG)
+![3b](images/6.PNG)
+![3bb](images/5.PNG)
+
+(c)
+
+![3](images/3.PNG)
+![3c](images/7.PNG)
+![3cc](images/8.PNG)
+
+
 
 
