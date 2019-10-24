@@ -71,4 +71,9 @@ query: -
 Fragement: -
 ﻿
 ​
+# Question 2
 
+(a)
+
+
+(b) ![2b](images/2b.PNG)
