@@ -86,3 +86,10 @@ Fragement: -
 
 ![3](images/3.PNG)
 ![3a](images/4.PNG)
+
+(b) 
+
+![3](images/6.PNG)
+![3](images/5.PNG)
+
+
