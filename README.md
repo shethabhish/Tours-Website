@@ -106,5 +106,10 @@ Fragement: -
 ![4a](images/10.PNG)
 ![4aa](images/9.PNG)
 
+(b)
+
+![4b](images/12.PNG)
+![4bb](images/11.PNG)
+
 
 
