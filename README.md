@@ -14,6 +14,8 @@
 
 (iii) The HTTP version that is being used is 1.1
 
+![1](images/1.PNG)
+
 (b) Request Headers
 
 Provisional headers are shown
