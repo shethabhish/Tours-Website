@@ -74,6 +74,7 @@ Fragement: -
 # Question 2
 
 (a) 
+
 ![2a](images/12.PNG)
 
 windLog.js 
@@ -97,7 +98,9 @@ windLog.js
 
 
 
-(b) ![2b](images/2.PNG)
+(b) 
+
+![2b](images/2.PNG)
 
 (c)
 ![2c](images/13.PNG)
