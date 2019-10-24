@@ -99,6 +99,12 @@ Fragement: -
 ![3c](images/7.PNG)
 ![3cc](images/8.PNG)
 
+# Question 4
+
+(a) 
+
+![4a](images/10.PNG)
+![4aa](images/9.PNG)
 
 
 
