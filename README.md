@@ -76,4 +76,4 @@ Fragement: -
 (a)
 
 
-(b) ![2b](images/2b.PNG)
+(b) ![2b](images/2.PNG)
