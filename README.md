@@ -77,3 +77,12 @@ Fragement: -
 
 
 (b) ![2b](images/2.PNG)
+
+(c)
+
+# Question 3
+
+(a)
+
+![3](images/3.PNG)
+![3a](images/4.PNG)
