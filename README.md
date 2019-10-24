@@ -73,12 +73,55 @@ Fragement: -
 ​
 # Question 2
 
-(a)
+(a) 
+![2a](images/12.PNG)
+
+windLog.js 
+
+	const rp = require('request-promise-native');
+	let options = {
+	uri: 'https://windsurf.grotto-networking.com/data/logs/windEvents2013.json',
+	json: true
+	};
+	rp(options).then(function(data){
+	console.log(`The number of sailing sessions in 2014 was: ${data.length}`);
+	let maxSpeeds = data.map(e => e.max10sec);
+	let distances = data.map(e => e.distance);
+	let maxSpeed = maxSpeeds.reduce(function(acc, cur){return Math.max(acc, cur)});
+	let maxDistance = distances.reduce(function(acc, cur){return Math.max(acc, cur)});
+	console.log(`The fastest 10 second speed average was: ${maxSpeed}`);
+	console.log(`The longest single day distance was: ${maxDistance}`);
+	}).catch(function(err){
+	console.log(`Error: ${err}`);
+	})
+
 
 
 (b) ![2b](images/2.PNG)
 
 (c)
+![2c](images/13.PNG)
+
+track.js
+
+	const rp = require('request-promise-native');
+	let options = {
+	uri: 'https://windsurf.grotto-networking.com/data/tracks/track_2013_10_23.json',
+	json: true
+	};
+	rp(options).then(function(data){
+	console.log(`The start time of track_2014_10_23 was: ${data.start_time}`);
+
+	let duration = (data.points.length)/60.0;
+	console.log(`The session lasted ${duration} minutes`);
+	// Unix time stamps can be converted to JavaScript by multiply by 1000.
+	let dateTime = new Date(1000*data.start_time);
+	console.log(`Bonus the start time corresponds to ${dateTime}`);
+	}).catch(function(err){
+	console.log(`Error: ${err}`);
+	})
+
+
 
 # Question 3
 
@@ -112,4 +155,5 @@ Fragement: -
 ![4bb](images/11.PNG)
 
 
+# Question 5
 
