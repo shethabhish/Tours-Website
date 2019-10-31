@@ -56,5 +56,34 @@ I have been pwned on 7 breach websites with one of my email and none in the othe
 
 Its is important to keep logs of various activities associated with your web app so that only new information can be written as old record, data cannot be rewritten or deleted. Log files also help you differentiate the changes from past log and also can be helpful for error detection.
 
+# Question 3
 
+(a) 
+
+![3a](images/1.png)
+
+	const fs = require('fs');
+	const bcrypt = require('bcryptjs');
+	let users = require('./usersTours.json');
+	let nRounds = 13;
+	let hashedUsers = [];
+	let start = new Date(); // timing code
+	console.log(`Starting password hashing with nRounds = ${nRounds}, ${start}`);
+	for (var i = 0; i < users.length; i++) {
+
+
+
+	// Hashing a password prior to storage
+	let salt = bcrypt.genSaltSync(13); // New salt everytime!
+	let passHash = bcrypt.hashSync(users[i].password, salt);
+	users[i].password = passHash;
+	}
+	hashedUsers = users;
+	let elapsed = new Date() - start; // timing code
+	console.log(`Finished password hashing, ${elapsed/1000} seconds.`);
+	fs.writeFileSync("userTourHash.json", JSON.stringify(hashedUsers, null, 2)); 
  
+ (b) 
+
+![3b](images/2.PNG)
+
