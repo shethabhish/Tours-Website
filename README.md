@@ -91,8 +91,8 @@ Its is important to keep logs of various activities associated with your web app
 
 	var express = require('express');
 	var app = express();
-	port = 1120;
-	host = '127.73.73.11'; // Any loopback address
+	port = 2626;
+	host = '125.02.26.98'; // Any loopback address
 	app.listen(port, host, function () {
 	  console.log(`Example app listening on IPv4: ${host}:${port}`);
 	});
@@ -122,4 +122,40 @@ Its is important to keep logs of various activities associated with your web app
 	    res.send(`Bad email Login error: StatusCodeError: 401 = ${JSON.stringify(errorMessage)}`)
 	});
 
+
 # Question 5
+	const rp = require('request-promise-native');
+	function logData(userData) {    
+		console.log(`${userData}`);}
+	async function login() {    
+		let pairs = {       
+		 method: 'POST',        
+		 url: 'http://localhost:1326/login',        
+		 body: {"email": "aaabbbcc@xyzz.com", "password": "abshdbds'"},        
+		 json: true    
+		};
+		rp(pairs).then(logData).catch(function(msg){
+			        console.log(`Error: ${msg}`);        
+		})
+
+	    pairs = {            
+		method: 'POST',
+		url: 'http://localhost:1326/login',            
+		body: {"email": "gadapar@fhdshfd.com", "password": "fsdfef'"},            
+		json: true        
+	};    
+	rp(pairs).then(logData).catch(function(msg){            
+		console.log(`Error: ${msg}`);            
+	})
+	    pairs = {                
+		method: 'POST',                
+		url: 'http://localhost:1326/login',                
+		body: {"email": "eqwwqr@hot.com", "password": "bfdfffard"},                
+		json: true            
+	};    
+	rp(pairs).then(logData).catch(function(msg){                
+		console.log(`Error: ${msg}`);                
+	})
+	}
+	login();
+
