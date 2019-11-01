@@ -90,21 +90,20 @@ Its is important to keep logs of various activities associated with your web app
 # Question 4
 
 	var express = require('express');
+	const bcrypt = require('bcryptjs');
 	var app = express();
-	port = 2626;
-	host = '125.02.26.98'; // Any loopback address
+	port = 3988;
+	host = '127.89.35.76';
 	app.listen(port, host, function () {
-	  console.log(`Example app listening on IPv4: ${host}:${port}`);
+	 console.log(`Example app listening on IPv4: ${host}:${port}`);
 	});
+	let loginData = require('./userTourHash.json')
 	app.post('/login',express.json(),function(req,res)
-
-	        {
+	   {
 	            let arrayOfUser = {};
 	            let email = req.body.email;
 	            let password = req.body.password;
-
 	            let errorMessage = {"error": true, "message": "User/Password error"};
-
 	            for(let i=0; i< loginData.length; i++) {
 	                if(loginData[i].email == email) {
 	                    let verified = bcrypt.compareSync(password, loginData[i].password);
@@ -120,42 +119,53 @@ Its is important to keep logs of various activities associated with your web app
 	                }
 	            }
 	    res.send(`Bad email Login error: StatusCodeError: 401 = ${JSON.stringify(errorMessage)}`)
-	});
 
 
 # Question 5
-	const rp = require('request-promise-native');
-	function logData(userData) {    
-		console.log(`${userData}`);}
-	async function login() {    
-		let pairs = {       
-		 method: 'POST',        
-		 url: 'http://localhost:2628/login',        
-		 body: {"email": "aaabbbcc@xyzz.com", "password": "abshdbds'"},        
-		 json: true    
-		};
-		rp(pairs).then(logData).catch(function(msg){
-			        console.log(`Error: ${msg}`);        
-		})
 
-	    pairs = {            
-		method: 'POST',
-		url: 'http://localhost:2628/login',            
-		body: {"email": "gadapar@fhdshfd.com", "password": "fsdfef'"},            
-		json: true        
-	};    
-	rp(pairs).then(logData).catch(function(msg){            
-		console.log(`Error: ${msg}`);            
-	})
-	    pairs = {                
-		method: 'POST',                
-		url: 'http://localhost:2628/login',                
-		body: {"email": "eqwwqr@hot.com", "password": "bfdfffard"},                
-		json: true            
-	};    
-	rp(pairs).then(logData).catch(function(msg){                
-		console.log(`Error: ${msg}`);                
-	})
+![5](images/3.PNG)
+	 const rp = require('request-promise-native');
+
+	function logData(data){
+	   console.log(`${data}`);
 	}
-	login();
+
+	async function test(){
+	   var options = {
+	   method: 'POST',
+	   uri: 'http://122.02.26.28:1234/login',
+	   body: {"email": "aaabbbcc@xyzz.com",
+	    "password": "4d45adf52{'"},
+	           json: true
+	};
+	   rp(options).then(logData).catch(function(msg)
+	    {console.log(`Error: ${msg}` );
+	    })
+
+	   var options = {
+	   method: 'POST',
+	   uri: 'http://122.02.26.28:1234/login',
+	   body: {"email": "gadapar@fhdshfd.com",
+	    "password": "SHHVDJ45121"},
+	           json: true
+	};
+	   rp(options).then(logData).catch(function(msg)
+	    {console.log(`Error: ${msg}` );
+	     })
+
+
+	   var options = {
+	   method: 'POST',
+	   uri: 'http://122.02.26.28:1234/login',
+	   body: {"email": "eqwwqr@hot.com", "password": "`#^(kmfd"},
+	           json: true
+	};
+	  rp(options).then(logData).catch(function(msg)
+	    {console.log(`Error: ${msg}` )
+	    ;})
+
+	}
+
+	test();
+
 
