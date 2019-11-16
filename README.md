@@ -6,166 +6,152 @@
 
 # Question 1
 
-(a) Confidentiality:
+(a)<br />
 
-(i) In the context of information security, confidentiality refers to the protection of information from being accessed by other people who aren’t authorized. Only the people authorized should have access to the corresponding information.
+const DataStore = require('nedb-promises');
+const db = new DataStore({filename: __dirname + '/userDB', autoload: true});
+const users = require('./usersTours.json');
 
-(ii) A recent event where confidentiality was lost was reported by Prisma Health midlands. They announced that private patient information was leaked, including social security numbers, bank credentials and birthdays after an employee account was compromised.
+async function initialize() { // so I can await!
+    try {
+        let numRemoved = await db.remove({}, {multi: true});
+        console.log(`Cleanup, removed ${numRemoved} Data`);
+        let newDocs = await db.insert(users);
+        console.log(`Added ${newDocs.length} Data`);
+    } catch (err) {
+        console.log(`Database error: ${err}`);
+    }
+}
 
-(iii) Another name for loss of confidentiality is “Breach”.
+initialize(); // don't forget to run the async function
 
-(b) Integrity:
+(b)<br />
 
-(i) The integrity of a software downloaded from the internet might be an issue if there is no authenticity of the information, i.e if the provided information is not genuine. In such case integrity is lost because there can be alterations to the information you needed and you didn't know it. 
+const DataStore = require('nedb-promises');
+const db = new DataStore({filename: __dirname + '/toursDB', autoload: true});
+const tours = require('./Tours.json');
+async function initialize() { // so I can await!
+   try {
+       let numRemoved = await db.remove({}, {multi: true});
+       console.log(`Cleanup, removed ${numRemoved} Data`);
+       let newDocs = await db.insert(tours);
+       console.log(`Added ${newDocs.length} Data`);
+   } catch (err) {
+       console.log(`Database error: ${err}`);
+   }
+}
 
-(ii) Some of the common measures taken to ensure integrity of open source software’s are:
-Frequent updates, to change or check if the code has been altered.
-Treat everything as codes including payment methods, so they cannot be easily accessible
-Frequent coverity scans to check for alterations of code.
-
-(c) Availability:
-
-(i) The name of a network based attack that results in loss of availability is called denial-of-service.
-
-(ii) Yes, a WIFI jammer can be an attack on availability as it will lead to denial of WIFI service.
+initialize();
 
 # Question 2
 
-(a)Authentication:
+(a)<br />
 
-(i) Credential stuffing is an automated injection of breached username and password pairs in order to get access to user accounts. 
-Users shouldn’t have same passwords for two different websites because it easy acces the other website once you know the password of one. 
-You should be concerned about authorizations if there are any highly valuable information in your accounts that you don’t want to share with others.
-I have been pwned on 7 breach websites with one of my email and none in the other two.
+app.get('/tours' ,function(req, res) {
 
-(b)Authentication(multi-factor):
+db.find().then((docs)=>{
+console.log(`We found ${docs.length} documents`);
+console.log(docs);
+res.json(docs);
+});
+});
 
-(i) A two factor authentication is where you have to verify your identity twice before gaining access to you accounts.
+(b)<br />
 
-(ii) The U.S bank website has two factor authentication. In the first factor you have to enter your username and password and in the second you have to answer the security question that you had set when creating the account.
+app.post('/addTour', checkAdminMiddleware, express.json(), function (req, res) {
+    var body = req.body;
+    tours.insert(body, function(newDocs) {
 
-(iii) It is not 100% hack proof, but is better than 1 step authentication.
+    if(err)
+    {
+    console.log(`Error`);
+    console.log(err);
+    } else {
 
-(c)   Authorization:
+    console.log(`Added ${newDocs.length} docs`);
+    }
 
-(i) Authorization systems used in computer systems, applications or company are Oracle Entitlement server. Cloud access manager, Transmit security.
+  });
+});
 
-(ii) RBAC is defined as Role Based access control, it’s idea is to give permissions to users based on their role of the organization.
+(c)<br />
 
-(d) Accounting:
-
-Its is important to keep logs of various activities associated with your web app so that only new information can be written as old record, data cannot be rewritten or deleted. Log files also help you differentiate the changes from past log and also can be helpful for error detection.
 
 # Question 3
 
-(a) 
+(a)<br />
+code
 
-![3a](images/1.png)
+const cookieName = "xq4954"; // Session ID cookie name, use this to delete cookies too.
+app.use(session({
+  secret: 'This is secret key brought to you by Shethabhish!',
+  resave: false,
+  saveUninitialized: false,
+  name: cookieName, // Sets the name of the cookie used by the session middleware
+}));
 
-	const fs = require('fs');
-	const bcrypt = require('bcryptjs');
-	let users = require('./usersTours.json');
-	let nRounds = 13;
-	let hashedUsers = [];
-	let start = new Date(); // timing code
-	console.log(`Starting password hashing with nRounds = ${nRounds}, ${start}`);
-	for (var i = 0; i < users.length; i++) {
+const setUpSessionMiddleware = function (req, res, next) {
+  console.log(`session object: ${JSON.stringify(req.session)}`);
+  console.log(`session id: ${req.session.id}`);
+  if (!req.session.user) {
+      req.session.user = {role: "guest"};
+  };
+   next();
+};
 
+(b)<br />
 
+![ss](images/1.png)
 
-	// Hashing a password prior to storage
-	let salt = bcrypt.genSaltSync(13); // New salt everytime!
-	let passHash = bcrypt.hashSync(users[i].password, salt);
-	users[i].password = passHash;
-	}
-	hashedUsers = users;
-	let elapsed = new Date() - start; // timing code
-	console.log(`Finished password hashing, ${elapsed/1000} seconds.`);
-	fs.writeFileSync("userTourHash.json", JSON.stringify(hashedUsers, null, 2)); 
- 
- (b) 
+(c)<br />
 
-![3b](images/2.PNG)
+app.post('/login',express.json(),function(req,res)
 
-# Question 4
+       {
+           let arrayOfUser = {};
+           let email = req.body.email;
+           let password = req.body.password;
 
-	var express = require('express');
-	const bcrypt = require('bcryptjs');
-	var app = express();
-	port = 3988;
-	host = '127.89.35.76';
-	app.listen(port, host, function () {
-	 console.log(`Example app listening on IPv4: ${host}:${port}`);
-	});
-	let loginData = require('./userTourHash.json')
-	app.post('/login',express.json(),function(req,res)
-	   {
-	            let arrayOfUser = {};
-	            let email = req.body.email;
-	            let password = req.body.password;
-	            let errorMessage = {"error": true, "message": "User/Password error"};
-	            for(let i=0; i< loginData.length; i++) {
-	                if(loginData[i].email == email) {
-	                    let verified = bcrypt.compareSync(password, loginData[i].password);
-	                    if(verified) {
-	                        arrayOfUser.firstName = loginData[i].firstName;
-	                        arrayOfUser.lastName = loginData[i].lastName;
-	                        arrayOfUser.email = loginData[i].email;
-	                        arrayOfUser.role = loginData[i].role;
-	                        res.send(`Good login Test result: ${JSON.stringify(arrayOfUser)}`)
-	                    } else {
-	                        res.send(`Bad password Login error: StatusCodeError: 401 = ${JSON.stringify(errorMessage)}`)
-	                    }
-	                }
-	            }
-	    res.send(`Bad email Login error: StatusCodeError: 401 = ${JSON.stringify(errorMessage)}`)
+           let errorMessage = {"error": true, "message": "User/Password error"};
+
+           for(let i=0; i< loginData.length; i++) {
+               if(loginData[i].email == email) {
+                   let verified = bcrypt.compareSync(password, loginData[i].password);
+                   if(verified) {
+                       arrayOfUser.firstName = loginData[i].firstName;
+                       arrayOfUser.lastName = loginData[i].lastName;
+                       arrayOfUser.email = loginData[i].email;
+                       arrayOfUser.role = loginData[i].role;
+                       res.send(`Good login Test result: ${JSON.stringify(arrayOfUser)}`)
 
 
-# Question 5
+                       let oldInfo = req.session.user;
+                       req.session.regenerate(function (err) {
+                         if (err) {console.log(err);}
+                       let newUserInfo = Object.assign(oldInfo, errorMessage);
+                       // delete newUserInfo.passHash;
+                       req.session.user = newUserInfo;
+                       res.json(newUserInfo);
+                   });
+                   }
+                   else {
+                       res.send(`Bad password Login error: StatusCodeError: 401 = ${JSON.stringify(errorMessage)}`)
+                   }
+               }
+           }
+   res.send(`Bad email Login error: StatusCodeError: 401 = ${JSON.stringify(errorMessage)}`)
+  });
 
-![5](images/3.PNG)
-	 const rp = require('request-promise-native');
+(d)<br />
 
-	function logData(data){
-	   console.log(`${data}`);
-	}
-
-	async function test(){
-	   var options = {
-	   method: 'POST',
-	   uri: 'http://122.02.26.28:1234/login',
-	   body: {"email": "aaabbbcc@xyzz.com",
-	    "password": "4d45adf52{'"},
-	           json: true
-	};
-	   rp(options).then(logData).catch(function(msg)
-	    {console.log(`Error: ${msg}` );
-	    })
-
-	   var options = {
-	   method: 'POST',
-	   uri: 'http://122.02.26.28:1234/login',
-	   body: {"email": "gadapar@fhdshfd.com",
-	    "password": "SHHVDJ45121"},
-	           json: true
-	};
-	   rp(options).then(logData).catch(function(msg)
-	    {console.log(`Error: ${msg}` );
-	     })
-
-
-	   var options = {
-	   method: 'POST',
-	   uri: 'http://122.02.26.28:1234/login',
-	   body: {"email": "eqwwqr@hot.com", "password": "`#^(kmfd"},
-	           json: true
-	};
-	  rp(options).then(logData).catch(function(msg)
-	    {console.log(`Error: ${msg}` )
-	    ;})
-
-	}
-
-	test();
-
+app.get('/logout', function (req, res) {
+   let options = req.session.cookie;
+   req.session.destroy(function (err) {
+       if (err) {
+           console.log(err);
+       }
+       res.clearCookie(cookieName, options); // the cookie name and options
+       res.json({message: "Goodbye"});
+   })
+});
 
