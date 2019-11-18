@@ -184,7 +184,6 @@
 	 console.log(err);
 	});
 
-![images](images/2.png)
 
 # Question 3
 
