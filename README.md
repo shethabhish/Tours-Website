@@ -264,6 +264,10 @@ code
 	   })
 	});
 
+	(e) 
+![images](images/2.png)
+	
+
 #Question 4
 
 (a)<br />
