@@ -288,7 +288,7 @@ code
 
 	const cookieName = "np6987toursid";
 	app.use(session({
-	 secret: 'Gayatri',
+	 secret: 'Shethabhish',
 	 resave: false,
 	 saveUninitialized: false,
 	 name: cookieName
