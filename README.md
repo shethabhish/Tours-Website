@@ -8,7 +8,7 @@
 
  (a) See all tours
 
-url : http://127.72.0.13:1234:1326/tours
+url : http://127.72.0.13:1234/tours
 
 method : GET
 
