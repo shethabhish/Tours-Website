@@ -1,9 +1,3 @@
-npm i assert<br />
-	npm install --global mocha<br />
-	npm i chai<br />
-	npm i supertest
-
-	*code*
 
 	const express = require('express');
 	const app1 = express();
