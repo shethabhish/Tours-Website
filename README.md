@@ -55,3 +55,13 @@ method : DELETE
 return codes: 200 code for Success, 401 code for Failure
 
 role : user
+
+# Question 2
+
+(a) GET /tours/{toursId}
+
+(b) POST /tours/{toursId}/login/{loginId}
+
+(c) DELETE /user/{userId}
+
+(d) GET /user/{userId}/tours/{toursId}
