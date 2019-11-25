@@ -183,3 +183,161 @@ role : user
 
 ![two](images/2.png)
 
+# Question 4
+
+(a)
+
+	app.get('/tour/:tourId', async function (req,res){
+	   let tours = await datastore.find({});
+	   let auser = await tours.find(function (tour) {
+	   return tour._id === req.params.tourId
+	 });
+	   if (!auser) {
+	   res.status(401).json({error: true, message: "User/Password error"});
+	   return;
+	 } else{
+	       return res.status(200).json({
+	                    Name: "Tours single",
+	                    Date: "A single student record",
+	              });
+	   }
+	});
+
+![ss](images/3.png)
+
+(b)
+
+![ss](images/4.png)
+
+# Question 5
+
+(a)
+
+	app.post('/addTours', adminCondition, express.json(), async function (req, res) {
+	   
+	 try {
+	       let tour = req.body;
+	       console.log(tour);
+	       await datastore.insert(tour);
+	       
+	       let tours = await datastore.find({});
+	       res.json(tours);
+	       
+	 } catch (e) {
+	   console.log(`error: ${e}`);
+	       res.status(500).json({error:"error with add Tour"});
+	 }
+	   
+	});
+
+	describe('Add Tour Tests', function() {
+	       let response1, response2, response3,agent;
+	       
+
+	before(async function(){
+	 db();
+	});
+	           
+	           After(async function(){
+	 db();
+	});
+	         
+	       
+	it('Admin trying to add Tour', async function(){
+	agent = request.agent(app);
+	           response1 = await agent.post('/login').send({ "email": "sided1830@outlook.com",
+	   "password": "C}m8\"L,F"});
+	           assert.equal(response1.status,200);
+	           response1 = await agent.post('/addTours').send({"Name": "qwert",
+	             "Date": "Starting May 2020"});
+	            assert.equal(response1.status,200);
+	            await agent.get('/logout')
+	           
+	           });
+
+	it('Customer trying to add Tour', async function(){
+	agent = request.agent(app);
+	response1 = await agent.post('/login').send({"email": "ox1815@live.com","password": "h$$gCf{'"});
+	           assert.equal(response1.status,200);
+	           response1 = await agent.post('/addTours').send({"Name": "qwert","Date": "Starting May 2020"});
+	            assert.equal(response1.status,401);
+	            await agent.get('/logout')
+	           
+	           });
+	   
+	       it('Guest try to add Tour', async function(){
+	           
+	           
+	           
+	           response2 = await agent.post('/addTours').send({
+	             "Name": "qwert",
+	             "Date": "Starting May 2020"
+	           });
+	assert(response2.status, 401);
+	});
+	   });
+
+![ss](images/5.png)
+
+(b)
+
+	app.post('/deleteTours',adminCondition, express.json(), async function (req, res) {
+	 try {
+	       let temp = req.body;
+	       await datastore.remove({"_id":temp.id});
+	   let tours = await datastore.find({});
+	       res.json(tours);
+	       
+	 } catch (e) {
+	   console.log(`error: ${e}`);
+	       res.status(500).json({error:"error with add Tour"});
+	 }
+	   
+	});
+
+
+	describe('Delete Tour Tests', function() {
+	       let response1, response2, response3,agent;
+	       
+
+	before(async function(){
+	 db();
+	});
+	         
+	          After(async function(){
+	 db();
+	});
+	it('Admin trying to Delete Tour', async function(){
+	agent = request.agent(app);
+	           response1 = await agent.post('/login').send({ "email": "sided1830@outlook.com",
+	   "password": "C}m8\"L,F"});
+	           assert.equal(response1.status,200);
+	           response1 = await agent.post('/deleteTours').send({"id":"0IEMv0uvrPhcx5lx"});
+	            assert.equal(response1.status,200);
+	            await agent.get('/logout')
+	           
+	           });
+
+	it('Customer trying to Delete Tour', async function(){
+	agent = request.agent(app);
+	response1 = await agent.post('/login').send({"email": "ox1815@live.com","password": "h$$gCf{'"});
+	           assert.equal(response1.status,200);
+	           response1 = await agent.post('/deleteTours').send({"Name": "qwert","Date": "Starting May 2020"});
+	            assert.equal(response1.status,401);
+	            await agent.get('/logout')
+	           
+	           });
+	   
+	       it('Guest try to Delete Tour', async function(){
+	           
+	           
+	           
+	           response2 = await agent.post('/deleteTours').send({
+	             "Name": "qwert",
+	             "Date": "Starting May 2020"
+	           });
+	assert(response2.status, 401);
+	});
+	   });
+
+![ss](images/6.png)
