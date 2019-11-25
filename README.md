@@ -73,7 +73,7 @@ role : user
 	npm i chai
 	npm i supertest
 
-	*code*
+
 
 	const express = require('express');
 	const app1 = express();
@@ -86,6 +86,7 @@ role : user
 	});
 
 (b)
+
 			const app = require('./tourServer');
 			const assert = require('chai').assert;
 			const request = require('supertest');
