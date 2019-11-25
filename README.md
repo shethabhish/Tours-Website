@@ -69,8 +69,8 @@ role : user
 # Question 3
 
 (a)
-	npm install --global mocha<br />
-	npm i chai<br />
+	npm install --global mocha
+	npm i chai
 	npm i supertest
 
 	*code*
@@ -84,3 +84,101 @@ role : user
 	   console.log("Tour JSON session server listening on IPv4: " + host +
 	       ":" + port);
 	});
+
+(b)
+		const app = require('./tourServer');
+		const assert = require('chai').assert;
+		const request = require('supertest');
+		const cookie = require('cookie');
+		const chai = require('chai');
+		let agent = request.agent(app); //Use across many requests
+		describe('Get Tour Tests', function () {
+		let response;
+		let tours = null;
+		before(async function(){
+		response = await request(app).get('/tours');
+		})
+		it('Everything is OK', async function(){
+		assert.equal(response.status, 200);
+		});
+		it('Returns an array', function(){
+		tours = JSON.parse(response.text);
+		assert.isArray(tours);
+		});
+		it('All tour elements have name and date', function(){
+		tours.forEach(function(tour){
+		assert.containsAllKeys(tour, ['Name', 'Date']);
+		});
+		});
+		it('Cookie with appropriate name is returned', function(){
+		let cookies = response.header['set-cookie'].map(cookie.parse);
+		let mycookie = cookies.filter(c => c.hasOwnProperty('TourSid'));
+		assert.notEmpty(mycookie);
+		});
+		})
+
+![one](images/1.png)
+
+(c)
+
+	const assert = require('chai').assert;
+	const request = require('supertest');
+	const cookie = require('cookie');
+	const app = require('./tourServer'); // Import server
+	const host = '127.72.72.11';
+	const port = '3434';
+	app.listen(port, host, function () {
+	   console.log("Tour JSON session server listening on IPv4: " + host +
+	       ":" + port);
+	});
+
+	describe('Login Tests', function () {
+	   let response;
+	   let tours = null;
+	   let myCookie = null;
+	   let agent = request.agent(app); //Use across many requests
+
+	   before(async function(){
+	       response = await agent.get('/tours');
+	   })
+	   it('Cookie with appropriate name is returned', function(){
+       let cookies = response.header['set-cookie'].map(cookie.parse);
+       cookies= cookies.filter(c => c.hasOwnProperty('TourSid'));
+        assert.notEmpty(cookies);
+        myCookie = cookies[0];
+    });
+    describe('Login Sequence', function() {
+        before(async function(){
+            response = await agent.post('/login')
+                .send({"email": "stedhorses1903@yahoo.com", "password": "nMQs)5Vi"});
+        });
+        it('Login Good', function(){
+            assert.equal(response.status, 200);
+        });
+        it('User returned', function(){
+            let user = JSON.parse(response.text);
+            assert.containsAllKeys(user, ['firstName', 'lastName', 'role']);
+        });
+        it('Cookie session ID changed', function () {
+            let cookies = response.header['set-cookie'].map(cookie.parse);
+            cookies = cookies.filter(c => c.hasOwnProperty('TourSid'));
+            assert.notEmpty(cookies);
+            assert.notEqual(cookies[0]['TourSid'], myCookie['TourSid']);
+        });
+    });
+    describe('Bad Logins', function(){
+        it('Bad Email', async function(){
+            response = await agent.post('/login')
+                .send({"email": "Bstedhorses1903@yahoo.com",    "password": "nMQs)5Vi"});
+            assert.equal(response.status, 401);
+        });
+        it('Bad Password', async function(){
+            response = await agent.post('/login')
+                .send({"email": "stedhorses1903@yahoo.com", "password": "BnMQs)5Vi"});
+            assert.equal(response.status, 401);
+        });
+    })
+})
+
+![two](images/2.png)
+
