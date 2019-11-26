@@ -1,159 +1,178 @@
 const express = require('express');
-const app = express();
-var bodyParser = require("body-parser");
+let app = express(); 
+const session = require('express-session');
 const bcrypt = require('bcryptjs');
-const fs = require('fs');
-var session = require('express-session');
-var cookieParser = require('cookie-parser');
+
 const Datastore = require('nedb-promises');
-let tourDB = new Datastore({ filename: './toursDB', autoload: true });
-let usersDB = new Datastore({ filename: './usersDB', autoload: true });
-var users = fs.readFileSync('../tourServer/userTourHash.json');
+let datastore = Datastore.create(__dirname + '/toursDB');
 
 
-
-app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-const cookieName = "np6987toursid";
+const cookieName = "TourSid"; 
 app.use(session({
-  secret: 'Gayatri',
+  secret: 'website development CSUEB',
   resave: false,
   saveUninitialized: false,
-  name: cookieName
+  name: cookieName 
 }));
 
-const setUpSessionMiddleware = function (req, res, next) {
+const users = require('./userTourHash.json');
+const tours = require('./tours.json');
+
+
+function setUpSessionMiddleware(req, res, next) {
   if (!req.session.user) {
-    req.session.user = { role: 'guest' };
-  }
+    req.session.user = {role: "guest"};
+  };
   next();
-}
+};
 
 app.use(setUpSessionMiddleware);
 
-var getTours = async function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-  var toursData = await tourDB.find({});
-  console.log(`${JSON.stringify(toursData)}`);
-  console.log(`${JSON.stringify(toursData.length)}`);
-  res.json(toursData);
+function checkCustomerMiddleware(req, res, next) {
+  if (req.session.user.role === "guest") {
+    res.status(401).json({error: "Not permitted"});;
+  } else {
+    next();
+  }
+};
+
+
+var adminCondition = function (req, res, next) {
+  var err = { "error": "Not Permitted" };
+  if (req.session.user.role != "admin") {
+    var errString = "StatusCodeError: 401 - " + JSON.stringify(err);
+    res.status(401).json(errString);
+  }
+  else {
+    next();
+  }
 }
 
-var getNumberOfTours = async function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-  var toursData = await tourDB.find({});
-  var toursCount = `${JSON.stringify(toursData.length)}`;
+app.get('/tour', async function (req, res) {
+  try {
+    let tours = await datastore.find({});
+        res.json(tours);
+  } catch (e) {
+    console.log(`error: ${e}`);
+  }
+});  
 
- res.json(toursCount);
-}
+app.get('/tour/:tourId', async function (req,res){
+    let tours = await datastore.find({});
+    let auser = await tours.find(function (tour) {
+    return tour._id === req.params.tourId
+  });
+    if (!auser) {// Not found
+    res.status(401).json({error: true, message: "User/Password error"});
+    return;
+  } else{
+        return res.status(200).json({
+                     Name: "Tours single",
+                     Date: "A single student record",
+               });
+    }
+    
+});
 
-var addTours = async function (req, res) {
-   
-    let tour = req.body;
-       
-    await tourDB.insert(tour);
-       
-    let tours = await tourDB.find({});
-    res.json(tours);
-       
-}
+app.post('/addTours', adminCondition, express.json(), async function (req, res) {
+    
+  try {
+        let tour = req.body;
+        console.log(tour);
+        await datastore.insert(tour);
+        
+        let tours = await datastore.find({});
+        res.json(tours);
+        
+  } catch (e) {
+    console.log(`error: ${e}`);
+        res.status(500).json({error:"error with add Tour"});
+  }
+    
+});
 
-var doLogin = async function (req, res) {
-  console.log("inside login");
-  var loginData = req.body;
-  var email = loginData.email;
-  var password = loginData.password;
-    console.log(password);
+app.post('/deleteTours',adminCondition, express.json(), async function (req, res) {
+  try {
+        let temp = req.body;
+        await datastore.remove({"_id":temp.id});
+    let tours = await datastore.find({});
+        res.json(tours);
+        
+  } catch (e) {
+    console.log(`error: ${e}`);
+        res.status(500).json({error:"error with add Tour"});
+  }
+    
+});
+
+app.use('/addTours', function(req, res, next) {
+    next();
+});
+
+
+app.post('/login', express.json(), async function (req, res) {
+  var requestBody = req.body;
+  var email = requestBody.email;
+  var password = requestBody.password;
   var errorData = {
     "error": true,
     "message": "User/Password error"
   };
+  console.log(`Session id ${res.session}`);
   var user;
+    let auser;
   if (typeof (email) != "undefined" && typeof (password) != "undefined") {
-    let user = usersDB.find(function (user) {
+      auser = users.find(function (user) {
         return user.email === email
     });
-    if (!user) {
-
-      res.json(JSON.stringify(errorData));
+      
+    if (!auser) {
+        res.status(401).json({error: true, message: "User/Password error"});
+        return;
     }
     else {
-      console.log("else");
-        console.log(usersDB.password);
-     
-        if( email =="sided1830@outlook.com"){
-                console.log("inside");
-                req.session.user = {role: "admin"};
-            } else{
-                req.session.user = {role: "guest"};
-            }
+    if( email =="sided1830@outlook.com"){
+        req.session.user = {role: "admin"};
+      } else{
+        req.session.user = {role: "guest"};
+      }
         var oldUserInfo = req.session.user;
         req.session.regenerate(function (err) {
           if (err) {
-              console.log("if err");
             console.log(err);
           }
-       
-          let newUserInfo = Object.assign(oldUserInfo, user);
+    
+          let newUserInfo = Object.assign(oldUserInfo, auser);
           delete newUserInfo.password;
           req.session.user = newUserInfo;
-          console.log("Changing session.user when login : ", req.session.user);
-           
           res.json(newUserInfo);
         });
-    }
+  }
   }
   else {
     resData = "Bad login data : StatusCodeError: 401 - " + JSON.stringify(errorData);
   }
-}
+    
+});
 
-var doLogout = function (req, res) {
+app.get('/count/tour', async function (req, res){
+        res.setHeader('Content-Type', 'application/json');
+        var toursData = await datastore.find({});
+        var toursCount = `${JSON.stringify(toursData.length)}`;
+        res.json(toursCount);
+});
+
+app.get('/logout', function (req, res) {
   let options = req.session.cookie;
   req.session.destroy(function (err) {
     if (err) {
       console.log(err);
     }
-    res.clearCookie(cookieName, options);
-    res.json({ message: 'GoodBye' });
-  });
-}
-
-var checkAdmin = function (req, res, next) {
-  var err = { "error": "Not Permitted" };
-    console.log("Role:::::::");
-    console.log(req.session.user.role);
-  if (req.session.user.role !== "admin") {
-    var errString = "StatusCodeError: 401 - " + JSON.stringify(err);
-    res.json(errString);
-  }
-  else {
-    next();
-  }
-}
-
-var checkCustomer = function (req, res, next) {
-  var err = { "error": "Not Permitted" };
-  if (req.session.user.role !== 'customer') {
-    var errString = "StatusCodeError: 401 - " + JSON.stringify(err);
-    res.json(errString);
-  }
-  else {
-    next();
-  }
-}
-
-app.get('/tours', getTours);
-app.get('/count/tour', getNumberOfTours);
-app.post('/tours/add',checkAdmin, express.json(), addTours);
-app.post('/login', express.json(), doLogin);
-app.get('/logout', doLogout);
-
-
-host = '127.72.0.13';
-port = '1234';
-app.listen(port, host, function () {
-  console.log(`TourServer listening on IPv4: ${host}:${port}`);
+    res.clearCookie(cookieName, options); 
+    res.json({message: "Goodbye"});
+  })
 });
+
+
+module.exports = app;
+

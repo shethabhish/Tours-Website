@@ -12,9 +12,9 @@ app.listen(port, host, function () {
   console.log(`Example app listening on IPv4: ${host}:${port}`);
 });
 
-const cookieName = "xq4954"; // Session ID cookie name, use this to delete cookies too.
+const cookieName = "uh3536"; // Session ID cookie name, use this to delete cookies too.
 app.use(session({
-   secret: 'This is secret key brought to you by Shethabhish!',
+   secret: 'This is secret key brought to you by Gayatri!',
    resave: false,
    saveUninitialized: false,
    name: cookieName, // Sets the name of the cookie used by the session middleware
@@ -38,27 +38,26 @@ const checkAdminMiddleware = function (req, res, next) {
 };
 app.get('/tours' ,function(req, res) {
 
-db.find().then((docs)=>{
-console.log(`We found ${docs.length} documents`);
-console.log(docs);
-res.json(docs);
-});
-});
+    db.find().then((docs)=>{
+      console.log(`We found ${docs.length} documents`);
+      console.log(docs);
+      res.json(docs);
+      });
+  });
 
 app.post('/addTour', checkAdminMiddleware, express.json(), function (req, res) {
     var body = req.body;
     tours.insert(body, function(newDocs) {
 
-    if(err)
-    {
-    console.log(`Error`);
-    console.log(err);
-    } else {
+      if(err)
+      {
+        console.log(`Error`);
+        console.log(err);
+      } else {
 
-    console.log(`Added ${newDocs.length} docs`);
-    }
+        console.log(`Added ${newDocs.length} docs`);
+      } 
 
    });
 });
 app.use(setUpSessionMiddleware);
-

@@ -203,11 +203,11 @@ role : user
 	   }
 	});
 
-![ss](images/3.png)
+![three](images/3.png)
 
 (b)
 
-![ss](images/4.png)
+![four](images/4.png)
 
 # Question 5
 
@@ -277,7 +277,7 @@ role : user
 	});
 	   });
 
-![ss](images/5.png)
+![five](images/5.png)
 
 (b)
 
@@ -340,4 +340,4 @@ role : user
 	});
 	   });
 
-![ss](images/6.png)
+![six](images/6.png)
